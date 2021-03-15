@@ -1,0 +1,122 @@
+openapi: 3.0.0
+info:
+  title: 支付页信息
+  version: '1.0'
+  description: 获取支付页面信息
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  '/payment-info/{commodityId}/{specificationId}/{channelId}/{invitationId}/{userId}/{itemId}/{pay_method}':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commodity:
+                    type: object
+                  specification:
+                    type: array
+                    items: {}
+              examples:
+                example-1:
+                  value: {}
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-payment-info
+    parameters:
+      - schema:
+          type: string
+        name: commodityId
+        in: path
+        required: true
+        description: 商品Id
+      - schema:
+          type: string
+        name: specificationId
+        in: path
+        required: true
+        description: 规格Id
+      - schema:
+          type: string
+        name: channelId
+        in: path
+        required: true
+        description: 渠道Id
+      - schema:
+          type: string
+        name: invitationId
+        in: path
+        required: true
+        description: 邀请码
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+        description: 用户Id
+      - schema:
+          type: string
+        name: itemId
+        in: path
+        required: true
+        description: 子产品Id(资讯Id)
+      - schema:
+          type: string
+        name: pay_method
+        in: path
+        required: true
+        description: 支付方式
+  /payment:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-payment
+      description: ''
+    post:
+      summary: ''
+      operationId: post-payment
+      responses:
+        '200':
+          description: OK
+      description: 支付
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commodityId:
+                  type: string
+                  description: 商品ID
+                specificationId:
+                  type: string
+                  description: 规格ID
+                channelId:
+                  type: string
+                  description: 渠道ID
+                invitationId:
+                  type: string
+                  description: 邀请码
+                userId:
+                  type: string
+                  description: 用户ID
+                itemId:
+                  type: string
+                  description: 子产品ID（资讯ID）
+                pay_method:
+                  type: string
+                  description: 支付方式
+              required:
+                - pay_method
+        description: ''
+components:
+  schemas: {}
